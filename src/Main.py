@@ -2,7 +2,6 @@ from MyGraph import MyGraph
   
 ## Have fun guys =) 
 
-
 def example_not_directed_graph():
     g = MyGraph(3) ## Create a new graph with 5 vertices
     g.add_edge(0, 1) ## Create an edge from vertex 0 to vertex 1 
