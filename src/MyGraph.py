@@ -100,5 +100,5 @@ class MyGraph:
         visual_style["edge_width"] = 0.5
         tx, ax = plt.subplots()
         ig.plot(self.g, target=ax, **visual_style)
-        self.g.write('../out/graph.dot')  # Save a file
+        self.g.write('graph.dot')  # Save a file
         plt.show()
