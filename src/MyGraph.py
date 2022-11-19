@@ -1,8 +1,3 @@
-# Before execute any code make sure that you have installed python 3.9 + and pip3
-
-# pip install igraph
-# pip install matplotlib
-
 import igraph as ig
 import matplotlib.pyplot as plt
 from igraph import Graph
