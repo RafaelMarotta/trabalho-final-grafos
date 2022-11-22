@@ -16,7 +16,7 @@ class MyGraph:
         self.g.add_edges([(v1, v2)])
 
     def remove_edge(self, v1, v2):
-        pass
+        self.g.delete_edges([(v1, v2)])
 
     def get_vertex_custom_attr(self, n_vertex, attr):
         return self.g.vs[n_vertex][attr]
@@ -25,29 +25,35 @@ class MyGraph:
         self.g.vs[n_vertex][attr] = val
 
     def get_vertex_label(self, n_vertex):
-        return
+        return self.g.vs[n_vertex]["label"]
 
-    def set_vertex_label(self, text):
-        pass
+    def set_vertex_label(self, n_vertex, text):
+        self.g.vs[n_vertex]["label"] = text
 
-    def get_vertex_value(self, val):
-        pass
+    def get_vertex_value(self, val): 
+        return self.g.vs[val]["weight"]
 
     def set_vertx_value(self, val):
-        pass
+        self.g.vs["weight"] = val
 
     def set_edge_label(self, text):
-        pass
+        self.g.es["label"] = text
 
     def set_edge_val(self, val):
-        pass
+        self.g.es["weight"] = val
 
     def vertex_with_value_exists(self, v):
-        pass
+        for i in range(self.g.vcount()):
+            if self.g.vs[i]["weight"] == v:
+                return True
+        return False
 
     def vertex_with_label_exists(self, v):
-        pass
-
+        for i in range(self.g.vcount()):
+            if self.g.vs[i]["label"] == v:
+                return True
+        return False
+    
     def get_adjacency_matrix(self):
         pass
 
@@ -77,7 +83,7 @@ class MyGraph:
 
     def is_full_graph(self):
         pass
-
+    
     def has_bridge(self, method="TARJAN"):
         ## method = TARJAN/NAIVE
         pass
