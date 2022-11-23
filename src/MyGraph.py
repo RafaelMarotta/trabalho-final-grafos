@@ -55,25 +55,30 @@ class MyGraph:
         return False
     
     def get_adjacency_matrix(self):
-        pass
+        return self.g.get_adjacency()
+        
 
     def get_adjacency_list(self):
-        pass
+        return self.g.get_adjlist()
 
     def is_vertices_adjacents(self, v1, v2):
-        pass
+        if self.g.are_connected(v1, v2):
+            return True
+        return False
 
     def is_edges_adjacents(self, v1, v2, v3, v4):
         pass
 
     def vertex_exists(self, v):
-        pass
+        if v in self.g.vs:
+            return True
+        return False
 
     def vertex_count(self):
-        pass
+        return self.g.vcount()
 
     def edges_count(self):
-        pass
+        return self.g.ecount()
 
     def edge_exists(self, v1, v2):
         pass
@@ -82,7 +87,10 @@ class MyGraph:
         pass
 
     def is_full_graph(self):
-        pass
+        for i in range(self.g.vcount()):
+            if self.g.degree(i) != self.g.vcount() - 1:
+                return False
+        return True        
     
     def has_bridge(self, method="TARJAN"):
         ## method = TARJAN/NAIVE
@@ -108,3 +116,11 @@ class MyGraph:
         ig.plot(self.g, target=ax, **visual_style)
         self.g.write('graph.dot')  # Save a file
         plt.show()
+        
+    def is_connected(self):
+        # https://igraph.org/python/doc/tutorial/tutorial.html#checking-whether-a-graph-is-connected
+        if self.g.is_connected():
+            return True
+        return False
+
+    

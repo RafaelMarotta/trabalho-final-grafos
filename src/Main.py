@@ -24,10 +24,14 @@ def example_of_label():
 
 
 def example_full_graph():
-    g = MyGraph(10, directed=True, full=True)
+    g = MyGraph(8, directed=True, full=True)
     g.show()
 
-example_full_graph()
-# example_not_directioned_graph()
-#example_directed_graph()
-# example_of_label()
+def example_adjacency_matrix():
+    g = MyGraph(1, directed=False, full=False)    
+    g.show()
+    print(g.import_graph())
+    print(g.get_adjacency_matrix())
+    
+
+example_adjacency_matrix()
