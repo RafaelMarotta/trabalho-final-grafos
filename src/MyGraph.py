@@ -2,6 +2,7 @@ import igraph as ig
 import matplotlib.pyplot as plt
 from igraph import Graph
 
+from bridge_utils import find_bridges_tarjan
 
 class MyGraph:
     def __init__(self, n_vrt, directed=False, full=False):
@@ -96,6 +97,18 @@ class MyGraph:
         ## method = TARJAN/NAIVE
         pass
 
+    def has_bridge_tarjan(self):
+        bridges = find_bridges_tarjan(self.g)
+
+        if len(bridges) > 0:
+            return True
+
+        return False
+
+    def has_bridge_naive(self):
+        # check method find_bridges_naive in tarjan.py
+        pass
+
     def fleury(self, bridge_method="TARJAN"):
         pass
 
@@ -103,8 +116,8 @@ class MyGraph:
         # Checks out show method (That probably already solved this problem)
         pass
 
-    def import_graph(file, format):
-        # https://igraph.readthedocs.io/en/stable/generation.html#from-files
+    def import_graph(self, file, format):
+        self.g = Graph.Read(file, format=format)
         pass
 
     def show(self):
