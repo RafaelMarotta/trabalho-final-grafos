@@ -35,20 +35,15 @@ def find_bridges_tarjan(g: Graph):
 
     return bridge
 
-# TODO: needs to be validated
-def find_bridges_naive():
-    bridge = []
+def find_bridges_naive(g: Graph):
+    bridges = []
+    adj_list = g.get_adjlist()
 
-    for u in range(n):
-        for v in range(u + 1, n):
-            if not adj[u][v]:
-                continue
-
-            adj[u][v] = adj[v][u] = False
-
-            if not is_connected():
-                bridge.append((u, v))
-
-            adj[u][v] = adj[v][u] = True
-
-    return bridge
+    for edge in range(g.vcount()):
+        for v in adj_list[edge]:
+            g.delete_edges([(edge, v)])
+            if not g.is_connected():
+                bridges.append((edge, v))
+            g.add_edges([(edge, v)])
+    return bridges
+    
