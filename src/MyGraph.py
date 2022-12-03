@@ -66,6 +66,7 @@ class MyGraph:
         if self.g.are_connected(v1, v2):
             return True
         return False
+    
 
     def is_edges_adjacents(self, v1, v2, v3, v4):
         pass
@@ -82,10 +83,10 @@ class MyGraph:
         return self.g.ecount()
 
     def edge_exists(self, v1, v2):
-        pass
+        return self.g.are_connected(v1, v2)
 
     def is_graph_empty(self):
-        pass
+        return self.g.is_empty()
 
     def is_full_graph(self):
         for i in range(self.g.vcount()):
@@ -106,10 +107,20 @@ class MyGraph:
         return False
 
     def has_bridge_naive(self):
-        # check method find_bridges_naive in tarjan.py
-        pass
+        for v1 in range(self.g.vcount()):
+            for v2 in range(self.g.vcount()):
+                if self.g.are_connected(v1, v2):
+                    self.g.delete_edges([(v1, v2)])
+                    if not self.g.is_connected():
+                        self.g.add_edges([(v1, v2)])
+                        return True
+                    else:
+                        self.g.add_edges([(v1, v2)])
+        return False
 
     def fleury(self, bridge_method="TARJAN"):
+        
+        
         pass
 
     def export_graph(self):
