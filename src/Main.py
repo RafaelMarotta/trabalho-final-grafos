@@ -4,9 +4,7 @@ from MyGraph import MyGraph
 
 
 def example_not_directed_graph():
-    g = MyGraph(3)  # Create a new graph with 5 vertices
-    g.add_edge(0, 1)
-    g.add_edge(1, 2)
+    g = MyGraph(n_vrt = 5, full=True)  # Create a new graph with 5 vertices
 
     g.show()
     ret = g.fleury()
@@ -39,3 +37,5 @@ def example_adjacency_matrix():
     print(g.get_adjacency_matrix())
 
 example_not_directed_graph()
+#g = MyGraph.import_graph("./graph.dot", format="graphml")
+#g.show
