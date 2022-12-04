@@ -4,11 +4,15 @@ from MyGraph import MyGraph
 
 
 def example_not_directed_graph():
-    g = MyGraph(n_vrt = 5, full=True)  # Create a new graph with 5 vertices
+    g = MyGraph(n_vrt = 50, n_edges=500, random=True)  # Create a new graph with 5 vertices
 
-    g.show()
+    #g.show()
     ret = g.fleury()
     print(ret[0])
+    while ret[0] is not "Euleriano":
+        g = MyGraph(n_vrt = 10, n_edges=20, random=True)
+        ret = g.fleury(method="NAIVE")
+        print(ret[0])
     print(ret[1])
 
 
@@ -39,3 +43,4 @@ def example_adjacency_matrix():
 example_not_directed_graph()
 #g = MyGraph.import_graph("./graph.dot", format="graphml")
 #g.show
+

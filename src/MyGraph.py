@@ -5,14 +5,17 @@ from igraph import Graph
 from bridge_utils import *
 
 class MyGraph:
-    def __init__(self, g=None, n_vrt=None, directed=False, full=False, random=False):
+    def __init__(self, g=None, n_vrt=None, n_edges=None, directed=False, full=False, random=False):
         if g is not None: 
             self.g = g
-        else: 
-            if full:
-                self.g = Graph.Full(n=n_vrt, directed=directed)
-            else:
-                self.g = Graph(n=n_vrt, directed=directed)
+        elif random:
+            ## Generate a random graph with n_vrt vertices and n_edges edges with loop disabled and parallel
+            self.g = Graph.Erdos_Renyi(n=n_vrt, m=n_edges, directed=directed, loops=False)
+            self.export_graph()
+        elif full:
+            self.g = Graph.Full(n=n_vrt, directed=directed)
+        else:
+            self.g = Graph(n=n_vrt, directed=directed)
         self.g.vs["label"] = range(self.g.vcount())
         self.g.vs["weight"] = self.g.vs["label"]
 
@@ -137,8 +140,8 @@ class MyGraph:
             start = i
         else:
             # If the graph has 2 odd vertices, pick the first one
-            for i in range(graph.vcount()):
-                if graph.degree(i) % 2 != 0:
+            for i in range(graph.g.vcount()):
+                if graph.g.degree(i) % 2 != 0:
                     start = i
                     break
         path = graph.fleury_rec(graph, start, [start], method="TARJAN")
@@ -151,7 +154,7 @@ class MyGraph:
         for e in graph.g.get_adjlist()[v]:
             if not (graph.is_bridge_tarjan(v, e) if method == "TARJAN" else graph.is_bridge_naive(v, e)):
                 break
-        graph.remove_edge(v,e)
+        graph.g.delete_edges([(v,e)])
         path.append(e)
         return graph.fleury_rec(graph, e, path, method)
         
