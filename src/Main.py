@@ -31,7 +31,7 @@ def example_of_label():
 
 
 def example_full_graph():
-    g = MyGraph(5, directed=True)
+    g = MyGraph(100000, directed=False)
     g.show()
 
 def example_adjacency_matrix():

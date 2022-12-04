@@ -42,7 +42,7 @@ class MyGraph:
     def get_vertex_value(self, n_vertex):
         return self.g.vs[n_vertex]["weight"]
 
-    def set_vertx_value(self, n_vertex, val):
+    def set_vertex_value(self, n_vertex, val):
         self.g.vs[n_vertex]["weight"] = val
 
     def set_edge_label(self, v1, v2, text):
@@ -81,10 +81,16 @@ class MyGraph:
         return False
 
     def is_edges_adjacents(self, v1, v2, v3, v4):
-        return self.g.are_connected(v2, v4) and self.g.are_connected(v1, v2) or self.g.are_connected(v1, v4) and self.g.are_connected(v3, v4)
+        return self.g.are_connected(v2, v4) 
+        and self.g.are_connected(v1, v2) 
+        or self.g.are_connected(v1, v4) 
+        and self.g.are_connected(v3, v4)
 
     def vertex_exists(self, v):
         return v in self.g.vs
+
+    def edge_exists(self, v1, v2):
+        return self.g.are_connected(v1, v2)
 
     def vertex_count(self):
         return self.g.vcount()
@@ -92,8 +98,6 @@ class MyGraph:
     def edges_count(self):
         return self.g.ecount()
 
-    def edge_exists(self, v1, v2):
-        return self.g.are_connected(v1, v2)
 
     def is_graph_empty(self):
         return self.g.ecount() == 0 and self.g.vcount() > 0
