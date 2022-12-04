@@ -6,14 +6,14 @@ from bridge_utils import *
 
 
 class MyGraph:
-    def __init__(self, g=None, n_vrt=None, n_edges=None, directed=False, full=False, random=False):
+    def __init__(self, g=None, n_vrt=None, n_edges=None, directed=False, full=False, random=False, ring=False):
         if g is not None:
             self.g = g
+        elif ring:
+            self.g = Graph.Ring(n_vrt, directed=directed)
         elif random:
             # Generate a random graph with n_vrt vertices and n_edges edges with loop disabled and parallel
-            self.g = Graph.Erdos_Renyi(
-                n=n_vrt, m=n_edges, directed=directed, loops=False)
-            self.export_graph()
+            self.g = Graph.Erdos_Renyi(n=n_vrt, m=n_edges, directed=directed, loops=False)
         elif full:
             self.g = Graph.Full(n=n_vrt, directed=directed)
         else:
@@ -81,10 +81,7 @@ class MyGraph:
         return False
 
     def is_edges_adjacents(self, v1, v2, v3, v4):
-        return self.g.are_connected(v2, v4) 
-        and self.g.are_connected(v1, v2) 
-        or self.g.are_connected(v1, v4) 
-        and self.g.are_connected(v3, v4)
+        return self.g.are_connected(v2, v4) and self.g.are_connected(v1, v2) or self.g.are_connected(v1, v4) and self.g.are_connected(v3, v4)
 
     def vertex_exists(self, v):
         return v in self.g.vs
@@ -139,7 +136,7 @@ class MyGraph:
             return ["Não Euleriano"]
 
         # Make a copy of the graph
-        graph = self.clone()
+        graph = self
 
         if (odd_vertices == 0):
             # If the graph has 0 odd vertices, pick any vertex
@@ -150,7 +147,7 @@ class MyGraph:
                 if graph.g.degree(i) % 2 != 0:
                     start = i
                     break
-        path = graph.fleury_rec(graph, start, [start], method="TARJAN")
+        path = graph.fleury_rec(graph, start, [start], method=method)
         outp = "Euleriano" if path[0] == path[len(
             path) - 1] else "Semi-Euleriano"
         return [outp, path]

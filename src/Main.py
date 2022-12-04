@@ -1,4 +1,8 @@
 from MyGraph import MyGraph
+import sys
+from datetime import datetime
+
+sys.setrecursionlimit(200000000)
 
 # Representação utilizando Matriz/Lista de Adjacência
 
@@ -6,9 +10,6 @@ g = MyGraph(full=5, n_vrt=5)
 print(g.get_adjacency_matrix())
 print(g.get_adjacency_list())
 g.show()
-
-
-
 
 # Criação de grafos com X vértices
 g = MyGraph(n_vrt=5)
@@ -117,9 +118,12 @@ print(g.fleury())
 g = MyGraph(n_vrt=4, full=True)
 print(g.fleury())
 
-# Teste com 100 vértices
-g = MyGraph(n_vrt=100, n_edges=300, random=True)
-print(g.fleury())
+#Teste com 100 vértices
+g = MyGraph(n_vrt=100, ring=True)
+print(datetime.today())
+fleury = g.fleury(method="TARJAN")
+print(datetime.today())
+print(fleury)
 
 # Teste com 1000 vértices
 g = MyGraph(n_vrt=1000, n_edges=2450, random=True)
