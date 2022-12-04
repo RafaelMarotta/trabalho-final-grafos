@@ -6,6 +6,7 @@ def _tarjan_util(u, disc, low, parent, bridge, time, adj_list):
     time += 1
 
     for v in adj_list[u]:
+        
         if disc[v] == -1:
             parent[v] = u
             _tarjan_util(v, disc, low, parent, bridge, time, adj_list)
