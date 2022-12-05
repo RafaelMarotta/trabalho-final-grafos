@@ -3,8 +3,7 @@ import sys
 from datetime import datetime
 
 sys.setrecursionlimit(200000000)
-
-# Representação utilizando Matriz/Lista de Adjacência
+#Representação utilizando Matriz/Lista de Adjacência
 
 g = MyGraph(full=5, n_vrt=5)
 print(g.get_adjacency_matrix())
@@ -147,6 +146,7 @@ print("NAIVE (100) ")
 fleury = g.fleury(method="NAIVE")
 print(datetime.today()-startDate)
 print(fleury)
+
 
 
 # Teste com 1000 vértices
