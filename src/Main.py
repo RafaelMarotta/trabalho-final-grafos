@@ -120,22 +120,85 @@ print(g.fleury())
 
 #Teste com 100 vértices
 g = MyGraph(n_vrt=100, ring=True)
+
 print(datetime.today())
 fleury = g.fleury(method="TARJAN")
 print(datetime.today())
 print(fleury)
 
+print(datetime.today())
+fleury = g.fleury(method="NAIVE")
+print(datetime.today())
+print(fleury)
+
+# Teste com 100 vértices
+g = MyGraph(n_vrt=100, ring=True)
+
+startDate = datetime.today()
+print("TARJAN (100) ")
+fleury = g.fleury(method="TARJAN")
+print(datetime.today()-startDate)
+print(fleury)
+
+g = MyGraph(n_vrt=100, ring=True)
+
+startDate = datetime.today()
+print("NAIVE (100) ")
+fleury = g.fleury(method="NAIVE")
+print(datetime.today()-startDate)
+print(fleury)
+
+
 # Teste com 1000 vértices
-g = MyGraph(n_vrt=1000, n_edges=2450, random=True)
-print(g.fleury())
+g = MyGraph(n_vrt=1000, ring=True)
+
+startDate = datetime.today()
+print("TARJAN (1000) ")
+fleury = g.fleury(method="TARJAN")
+print(datetime.today()-startDate)
+print(fleury)
+
+g = MyGraph(n_vrt=1000, ring=True)
+
+startDate = datetime.today()
+print("NAIVE (1000) ")
+fleury = g.fleury(method="NAIVE")
+print(datetime.today()-startDate)
+print(fleury)
 
 # Teste com 10000 vértices
-g = MyGraph(n_vrt=10000, n_edges=24047, random=True)
-print(g.fleury())
+g = MyGraph(n_vrt=10000, ring=True)
+
+startDate = datetime.today()
+print("TARJAN (10000) ")
+fleury = g.fleury(method="TARJAN")
+print(datetime.today()-startDate)
+print(fleury)
+
+g = MyGraph(n_vrt=10000, ring=True)
+
+startDate = datetime.today()
+print("NAIVE (10000) ")
+fleury = g.fleury(method="NAIVE")
+print(datetime.today()-startDate)
+print(fleury)
 
 # Teste com 100000 vértices
-g = MyGraph(n_vrt=100000, n_edges=240035, random=True)
-print(g.fleury())
+g = MyGraph(n_vrt=100000, ring=True)
+
+startDate = datetime.today()
+print("TARJAN (100000) ")
+fleury = g.fleury(method="TARJAN")
+print(datetime.today()-startDate)
+print(fleury)
+
+g = MyGraph(n_vrt=100000, ring=True)
+
+startDate = datetime.today()
+print("NAIVE (100000) ")
+fleury = g.fleury(method="NAIVE")
+print(datetime.today()-startDate)
+print(fleury)
 
 # Export graph (Default: output.gml, format: gml)
 ## Nome do arquivo pode ser alterado pelo parâmetro filename e o formato pelo parâmetro format

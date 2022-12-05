@@ -1,4 +1,4 @@
-Creator "igraph version 0.10.2 Sun Dec  4 20:56:02 2022"
+Creator "igraph version 0.10.2 Sun Dec  4 21:09:20 2022"
 Version 1
 graph
 [
@@ -6,22 +6,32 @@ graph
   node
   [
     id 0
+    label 0
+    weight 0
   ]
   node
   [
     id 1
+    label 1
+    weight 1
   ]
   node
   [
     id 2
+    label 2
+    weight 2
   ]
   node
   [
     id 3
+    label 3
+    weight 3
   ]
   node
   [
     id 4
+    label 4
+    weight 4
   ]
   edge
   [
