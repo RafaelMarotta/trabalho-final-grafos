@@ -117,19 +117,6 @@ print(g.fleury())
 g = MyGraph(n_vrt=4, full=True)
 print(g.fleury())
 
-#Teste com 100 vértices
-g = MyGraph(n_vrt=100, ring=True)
-
-print(datetime.today())
-fleury = g.fleury(method="TARJAN")
-print(datetime.today())
-print(fleury)
-
-print(datetime.today())
-fleury = g.fleury(method="NAIVE")
-print(datetime.today())
-print(fleury)
-
 # Teste com 100 vértices
 g = MyGraph(n_vrt=100, ring=True)
 
@@ -146,8 +133,6 @@ print("NAIVE (100) ")
 fleury = g.fleury(method="NAIVE")
 print(datetime.today()-startDate)
 print(fleury)
-
-
 
 # Teste com 1000 vértices
 g = MyGraph(n_vrt=1000, ring=True)
