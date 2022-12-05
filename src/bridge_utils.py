@@ -39,20 +39,14 @@ def find_bridges_tarjan(g: Graph):
 def find_bridges_naive(g: Graph):
     bridges = []
     adj_list = g.get_adjlist()
+
     for v1 in range(g.vcount()):
         for v2 in adj_list[v1]:
-            count1 = dfs_count(g, v1, [False] * g.vcount())
+            ## Execute depth first search through v1 to find height
             g.delete_edges([(v1, v2)])
-            count2 = dfs_count(g, v1, [False] * g.vcount())
-            if count1 != count2:
+            if not g.is_connected():
                 bridges.append((v1, v2))
             g.add_edges([(v1, v2)])
     return bridges
-
-def dfs_count(g: Graph, v, visited):
-    visited[v] = True
-    count = 1
-    for i in g.neighbors(v):
-        if not visited[i]:
-            count += dfs_count(g, i, visited)
-    return count
+    
+# Find height of a vertex 
