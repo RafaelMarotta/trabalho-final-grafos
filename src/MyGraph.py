@@ -39,9 +39,6 @@ class MyGraph:
     def set_vertex_label(self, n_vertex, text):
         self.g.vs[n_vertex]["label"] = text
 
-    def get_vertex_value(self, n_vertex):
-        return self.g.vs[n_vertex]["weight"]
-
     def set_vertex_value(self, n_vertex, val):
         self.g.vs[n_vertex]["weight"] = val
 
